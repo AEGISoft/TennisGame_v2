@@ -9,6 +9,7 @@
         public TennisGame(Player player1, Player player2)
         {
             player1.PlayingAgainst(player2);
+            player2.PlayingAgainst(player1);
 
             this.player1 = player1;
             this.player2 = player2;
@@ -31,8 +32,6 @@
         }
 
         #endregion
-
-        #region private parts
         private bool PlayersHaveDeuceScore() { return player1.HasDeuceScoreWithOtherPlayer(); }
         private bool PlayersHaveEqualScore() { return player1.HasEqualScoreWithOtherPlayer(); }
 
@@ -47,6 +46,5 @@
                     return player1.Score + " - " + player2.Score;
             }
         }
-        #endregion
     }
 }
