@@ -7,10 +7,13 @@ namespace Tennis.Game.App
 
         private readonly IPlayerView player1View;
         private readonly IPlayerView player2View;
+        private readonly IGameView gameView;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            gameView = new GameView(GameScore_label, NewGame_Button);
 
             player1View = new PlayerView(
                 CreatePlayer1_Button,
