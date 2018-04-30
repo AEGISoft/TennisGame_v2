@@ -4,10 +4,11 @@ namespace Tennis.Game.App
 {
     public partial class MainWindow : Window
     {
-
+        #region construction
         private readonly IPlayerView player1View;
         private readonly IPlayerView player2View;
         private readonly IGameView gameView;
+        private readonly GameController gameController;
 
         public MainWindow()
         {
@@ -32,6 +33,10 @@ namespace Tennis.Game.App
                 Player2Misses_Button,
                 Player2Faults_Button,
                 Player2Returns_Button);
+
+            gameController = new GameController(player1View, player2View, gameView);
+
         }
+        #endregion
     }
 }

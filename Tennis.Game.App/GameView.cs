@@ -4,7 +4,7 @@ namespace Tennis.Game.App
 {
     class GameView: IGameView
     {
-        #region constructor
+        #region construction
         private readonly Label gameScore_Label;
         private readonly Button newGame_Button;
 

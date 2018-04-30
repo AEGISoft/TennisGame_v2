@@ -51,11 +51,12 @@ namespace Tennis.Game.App
 
         public void AllowWritingPlayerName()
         {
+            createPlayer_Button.Visibility = Visibility.Hidden;
+
             playerName_Textbox.Visibility = Visibility.Visible;
             playerName_Textbox.Focus();
             playerName_Textbox.SelectAll();
 
-            createPlayer_Button.Visibility = Visibility.Hidden;
         }
 
         public void ConfirmPlayerName()
