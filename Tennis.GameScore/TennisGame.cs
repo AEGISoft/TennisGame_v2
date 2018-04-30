@@ -32,6 +32,8 @@
         }
 
         #endregion
+
+        #region private parts
         private bool PlayersHaveDeuceScore() { return player1.HasDeuceScoreWithOtherPlayer(); }
         private bool PlayersHaveEqualScore() { return player1.HasEqualScoreWithOtherPlayer(); }
 
@@ -46,5 +48,6 @@
                     return player1.Score + " - " + player2.Score;
             }
         }
+        #endregion
     }
 }
