@@ -42,7 +42,7 @@
         #endregion
 
         #region private parts
-        private string Name { get; }
+        public string Name { get; }
         private int Points { get; set; }
 
         private Player OtherPlayer { get; set; }
