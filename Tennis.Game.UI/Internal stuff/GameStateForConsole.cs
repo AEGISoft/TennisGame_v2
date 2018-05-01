@@ -2,7 +2,7 @@
 
 namespace Tennis.Game.UI
 {
-    internal class GameStateForConsole : UIhandler
+    internal class GameStateForConsole : I_handle_the_UI
     {
         public void Say(string information)
         {

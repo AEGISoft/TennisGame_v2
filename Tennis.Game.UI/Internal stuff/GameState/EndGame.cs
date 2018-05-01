@@ -2,6 +2,6 @@
 {
     internal class EndGame : GameState
     {
-        public EndGame(GameState gamestate):base(gamestate){ }
+        public EndGame(GameState gamestate):base(gamestate){ EndGame = true; }
     }
 }

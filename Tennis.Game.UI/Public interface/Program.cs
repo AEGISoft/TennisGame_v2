@@ -9,7 +9,7 @@
             {
                 gamestate = gamestate.Next();
             }
-            while (gamestate.GetType() != typeof(EndGame));
+            while (!gamestate.EndGame);
         }
     }
 }

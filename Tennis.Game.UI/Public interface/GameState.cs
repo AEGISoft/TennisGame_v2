@@ -15,11 +15,11 @@ namespace Tennis.Game.UI
         protected I_am_rallying rallying;
         protected I_am_serving serving;
 
-        protected UIhandler uiHandler;
+        protected I_handle_the_UI uiHandler;
         #endregion
 
         #region construction
-        public GameState(UIhandler uiHandler) { this.uiHandler = uiHandler; }
+        public GameState(I_handle_the_UI uiHandler) { this.uiHandler = uiHandler; }
         protected GameState(GameState previousState)
         {
             player1 = previousState.player1;
@@ -106,6 +106,8 @@ namespace Tennis.Game.UI
         {
             return new StartGame(this);
         }
+
+        public bool EndGame { get; protected set; }
         #endregion
     }
 
