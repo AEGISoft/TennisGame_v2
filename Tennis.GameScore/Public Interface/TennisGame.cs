@@ -17,9 +17,10 @@
         #endregion
 
         #region published interface
+        public I_am_serving Started { get { return (I_am_serving)new Rally(player1, player2); } }
 
-        public I_am_rallying Serve()       { return ((I_am_serving) new Rally(player1, player2)).Serve(); }
-        public I_am_serving ServeFaulty()  { return ((I_am_serving) new Rally(player1, player2)).ServeFaulty(); }
+        public I_am_rallying Serve()       { return Started.Serve(); }
+        public I_am_serving ServeFaulty()  { return Started.ServeFaulty(); }
 
         public string Score
         {

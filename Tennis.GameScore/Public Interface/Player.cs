@@ -14,6 +14,7 @@
 
         #region published interface
         public string Name { get; }
+        public Player OtherPlayer { get; set; }
 
         public string Score
         { get {
@@ -47,7 +48,6 @@
 
         #region private parts
         private int Points { get; set; }
-        private Player OtherPlayer { get; set; }
         #endregion
     }
 }
