@@ -1,6 +1,6 @@
 ﻿namespace Tennis.GameScore
 {
-    public class Player: ITennisScore
+    public class Player
     {
         #region construction
         public Player(string name)
@@ -13,6 +13,8 @@
         #endregion
 
         #region published interface
+        public string Name { get; }
+
         public void PlayingAgainst(Player otherPlayer)
         {
             OtherPlayer = otherPlayer;
@@ -42,9 +44,7 @@
         #endregion
 
         #region private parts
-        public string Name { get; }
         private int Points { get; set; }
-
         private Player OtherPlayer { get; set; }
         #endregion
     }

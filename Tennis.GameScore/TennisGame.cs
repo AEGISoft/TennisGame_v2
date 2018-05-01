@@ -1,6 +1,6 @@
 ﻿namespace Tennis.GameScore
 {
-    public class TennisGame : ITennisScore
+    public class TennisGame
     {
         #region construction
         private readonly Player player1;
@@ -17,6 +17,10 @@
         #endregion
 
         #region published interface
+
+        public I_am_rallying Serve()       { return ((I_am_serving) new Rally(player1, player2)).Serve(); }
+        public I_am_serving ServeFaulty()  { return ((I_am_serving) new Rally(player1, player2)).ServeFaulty(); }
+
         public string Score
         {
             get
@@ -30,7 +34,6 @@
                 return GameScore;
             }
         }
-
         #endregion
 
         #region private parts
