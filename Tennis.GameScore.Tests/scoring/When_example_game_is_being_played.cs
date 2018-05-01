@@ -27,6 +27,7 @@ namespace Tennis.GameScore.Tests
 
         }
 
+        #region private parts
         private static I_am_serving PlayerTwoWinsRally(TennisGame game)
         {
             return game.Serve().Return().Miss();
@@ -36,5 +37,6 @@ namespace Tennis.GameScore.Tests
         {
             game.Serve().Miss();
         }
+        #endregion
     }
 }

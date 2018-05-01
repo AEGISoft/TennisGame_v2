@@ -46,9 +46,11 @@ namespace Tennis.GameScore.Tests
         //combinations - player1 : 4+ points
         [InlineData("Björn", 5, "John", 3, "Björn wins")]
         [InlineData("Björn", 5, "John", 5, "Deuce")]
+        [InlineData("Björn", 15, "John", 16, "John has advantage")]
+        [InlineData("Björn", 21, "John", 20, "Björn has advantage")]
         [InlineData("Björn", 50, "John", 50, "Deuce")]
 
-        //illegal combinations
+        //illegal combinations : prove that we can deal with these without breaking
         [InlineData("Björn", 5, "John", 0, "Björn wins")]
         [InlineData("Björn", 5, "John", 1, "Björn wins")]
         [InlineData("Björn", 5, "John", 2, "Björn wins")]
@@ -64,7 +66,7 @@ namespace Tennis.GameScore.Tests
             int ScoringAtEqualPace = CalculateEqualPace(player1Points, player2Points, PlayerOneWinning, PlayerTwoWinning);
 
             //act
-            BothPlayersScoreAtEqualPace(game, ScoringAtEqualPace);
+            BothPlayersScoreAtEqualPace(ScoringAtEqualPace, game);
             if (PlayerOneWinning) PlayerOneScoresExtra(player1Points - ScoringAtEqualPace, game);
             if (PlayerTwoWinning) PlayerTwoScoresExtra(player2Points - ScoringAtEqualPace, game);
 
@@ -81,7 +83,7 @@ namespace Tennis.GameScore.Tests
         {
             for (int points = 0; points < extraScores; points++) { PlayerTwoScores(game); }
         }
-        private static void BothPlayersScoreAtEqualPace(TennisGame game, int ScoringAtEqualPace)
+        private static void BothPlayersScoreAtEqualPace(int ScoringAtEqualPace, TennisGame game)
         {
             for (int points = 0; points < ScoringAtEqualPace; points++)
             {
