@@ -59,11 +59,52 @@ namespace Tennis.GameScore.Tests
             Player player2 = new Player(player2Name);
             Player player1 = new Player(player1Name);
             var game = new TennisGame(player1, player2);
+            bool PlayerOneWinning = player1Points > player2Points;
+            bool PlayerTwoWinning = player2Points > player1Points;
+            int ScoringAtEqualPace = CalculateEqualPace(player1Points, player2Points, PlayerOneWinning, PlayerTwoWinning);
+
             //act
-            for (int points = 0; points < player1Points; points++) { player1.ScoredPoint();}
-            for (int points = 0; points < player2Points; points++) { player2.ScoredPoint();}
+            BothPlayersScoreAtEqualPace(game, ScoringAtEqualPace);
+            if (PlayerOneWinning) PlayerOneScoresExtra(player1Points - ScoringAtEqualPace, game);
+            if (PlayerTwoWinning) PlayerTwoScoresExtra(player2Points - ScoringAtEqualPace, game);
+
             //assert
             Assert.Equal(expectedScore, game.Score);
         }
+
+        #region private parts
+        private static void PlayerOneScoresExtra(int extraScores, TennisGame game)
+        {
+            for (int points = 0; points < extraScores; points++) { PlayerOneScores(game); }
+        }
+        private static void PlayerTwoScoresExtra(int extraScores, TennisGame game)
+        {
+            for (int points = 0; points < extraScores; points++) { PlayerTwoScores(game); }
+        }
+        private static void BothPlayersScoreAtEqualPace(TennisGame game, int ScoringAtEqualPace)
+        {
+            for (int points = 0; points < ScoringAtEqualPace; points++)
+            {
+                PlayerOneScores(game);
+                PlayerTwoScores(game);
+            }
+        }
+
+        private static int CalculateEqualPace(int player1Points, int player2Points, bool PlayerOneWinning, bool PlayerTwoWinning)
+        {
+            int ScoringAtEqualPace = player1Points;
+            if (PlayerOneWinning) ScoringAtEqualPace = player2Points;
+            if (PlayerTwoWinning) ScoringAtEqualPace = player1Points;
+            return ScoringAtEqualPace;
+        }
+        private static void PlayerTwoScores(TennisGame game)
+        {
+            game.ServeFaulty().ServeFaulty();
+        }
+        private static void PlayerOneScores(TennisGame game)
+        {
+            game.Serve().Miss();
+        }
+        #endregion
     }
 }

@@ -15,14 +15,6 @@
         #region published interface
         public string Name { get; }
 
-        public void PlayingAgainst(Player otherPlayer)
-        {
-            OtherPlayer = otherPlayer;
-            OtherPlayer.OtherPlayer = this;
-        }
-
-        public void ScoredPoint() { Points++; }
-
         public string Score
         { get {
             switch (Points)
@@ -33,14 +25,24 @@
                 default: return "Forty"; 
             }
         } }
+        #endregion
 
-        public string WinScore          { get { return Name + " wins"; } }
-        public string AdvantageScore    { get { return Name + " has advantage"; } }
+        #region internal interface
+        internal void PlayingAgainst(Player otherPlayer)
+        {
+            OtherPlayer = otherPlayer;
+            OtherPlayer.OtherPlayer = this;
+        }
 
-        public bool Wins()                          { return (Points >= 4 && Points - OtherPlayer.Points > 1); }
-        public bool HasAdvantage()                  { return (Points >= 4 && Points - OtherPlayer.Points == 1); }
-        public bool HasDeuceScoreWithOtherPlayer()  { return (Points >= 3) && HasEqualScoreWithOtherPlayer(); }
-        public bool HasEqualScoreWithOtherPlayer()  { return (Points == OtherPlayer.Points); }
+        internal void ScoredPoint() { Points++; }
+
+        internal string WinScore { get { return Name + " wins"; } }
+        internal string AdvantageScore { get { return Name + " has advantage"; } }
+
+        internal bool Wins() { return (Points >= 4 && Points - OtherPlayer.Points > 1); }
+        internal bool HasAdvantage() { return (Points >= 4 && Points - OtherPlayer.Points == 1); }
+        internal bool HasDeuceScoreWithOtherPlayer() { return (Points >= 3) && HasEqualScoreWithOtherPlayer(); }
+        internal bool HasEqualScoreWithOtherPlayer() { return (Points == OtherPlayer.Points); }
         #endregion
 
         #region private parts

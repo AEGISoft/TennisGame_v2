@@ -11,20 +11,30 @@ namespace Tennis.GameScore.Tests
             var player2 = new Player("John");
             var game = new TennisGame(player1, player2);
 
-            player1.ScoredPoint(); Assert.Equal("Fifteen - Love", game.Score);
-            player1.ScoredPoint(); Assert.Equal("Thirty - Love", game.Score);
+            PlayerOneWinsRally(game); Assert.Equal("Fifteen - Love", game.Score);
+            PlayerOneWinsRally(game); Assert.Equal("Thirty - Love", game.Score);
 
-            player2.ScoredPoint(); Assert.Equal("Thirty - Fifteen", game.Score);
-            player2.ScoredPoint(); Assert.Equal("Thirty all", game.Score);
-            player2.ScoredPoint(); Assert.Equal("Thirty - Forty", game.Score);
+            PlayerTwoWinsRally(game); Assert.Equal("Thirty - Fifteen", game.Score);
+            PlayerTwoWinsRally(game); Assert.Equal("Thirty all", game.Score);
+            PlayerTwoWinsRally(game); Assert.Equal("Thirty - Forty", game.Score);
 
-            player1.ScoredPoint(); Assert.Equal("Deuce", game.Score);
-            player1.ScoredPoint(); Assert.Equal("Björn has advantage", game.Score);
+            PlayerOneWinsRally(game); Assert.Equal("Deuce", game.Score);
+            PlayerOneWinsRally(game); Assert.Equal("Björn has advantage", game.Score);
 
-            player2.ScoredPoint(); Assert.Equal("Deuce", game.Score);
-            player2.ScoredPoint(); Assert.Equal("John has advantage", game.Score);
-            player2.ScoredPoint(); Assert.Equal("John wins", game.Score);
+            PlayerTwoWinsRally(game); Assert.Equal("Deuce", game.Score);
+            PlayerTwoWinsRally(game); Assert.Equal("John has advantage", game.Score);
+            PlayerTwoWinsRally(game); Assert.Equal("John wins", game.Score);
 
+        }
+
+        private static I_am_serving PlayerTwoWinsRally(TennisGame game)
+        {
+            return game.Serve().Return().Miss();
+        }
+
+        private static void PlayerOneWinsRally(TennisGame game)
+        {
+            game.Serve().Miss();
         }
     }
 }
