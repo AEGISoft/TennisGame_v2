@@ -1,6 +1,6 @@
 ﻿namespace Tennis.GameScore
 {
-    public class PlayerServingAgain : RallyState, I_manage_a_rally_state
+    internal class PlayerServingAgain : RallyState, I_manage_a_rally_state
     {
         #region construction
         internal PlayerServingAgain(RallyBetween rallyBetween) : base(rallyBetween) { }

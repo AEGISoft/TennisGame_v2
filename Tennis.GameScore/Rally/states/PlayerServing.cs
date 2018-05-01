@@ -1,6 +1,6 @@
 ﻿namespace Tennis.GameScore
 {
-    public class PlayerServing : RallyState, I_manage_a_rally_state
+    internal class PlayerServing : RallyState, I_manage_a_rally_state
     {
         #region construction
         // startpoint for a rally - the only public constructor

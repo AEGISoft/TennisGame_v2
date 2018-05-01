@@ -8,14 +8,15 @@
         #region construction
         private I_manage_a_rally_state rally;
 
-        private Rally(I_manage_a_rally_state rallyState)
-        {
-            this.rally = rallyState;
-        }
-
         public Rally(Player player1, Player player2)
         {
             this.rally = new PlayerServing(player1, player2);
+        }
+
+        //private constructor to avoid starting a rally without a PlayerServing state;
+        private Rally(I_manage_a_rally_state rallyState)
+        {
+            this.rally = rallyState;
         }
         #endregion
 
