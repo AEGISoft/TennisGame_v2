@@ -4,7 +4,7 @@
     /// purpose: grouping of the players in a rally
     /// responsibility: allows RallyStates to call the players 
     /// </summary>
-    public class RallyBetween 
+    internal class RallyBetween 
     {
         #region construction
         public readonly Player servingPlayer;

@@ -4,7 +4,7 @@
     /// purpose: base class for the different states in a rally.  
     /// responsibility: contains a reference to the players in the rally, for the subclasses to access
     /// </summary>
-    public class RallyState
+    internal class RallyState
     {
         #region construction
         public RallyBetween RallyBetween { get; private set; }
